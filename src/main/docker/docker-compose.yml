@@ -1,0 +1,22 @@
+version: '3'
+services:
+  mysql-docker:
+    image: mysql:5.7.25
+    container_name: mysql_demo
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "13306:3306"
+    volumes:
+      - /Users/meyoung/Documents/docker/MySQL/data:/var/lib/mysql
+
+  spring-boot-demo:
+    image: spring-boot-demo:1.0
+    container_name: spring_demo
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - mysql-docker
+    ports:
+      - "8093:8091"

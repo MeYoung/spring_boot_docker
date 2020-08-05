@@ -1,0 +1,21 @@
+# server
+server:
+  port: 8091
+  servlet:
+    context-path: /docker
+
+# database
+spring:
+  datasource:
+#    url: jdbc:mysql://localhost:13306/DemoDokcer
+#    mysql-docker 容器名
+    url: jdbc:mysql://mysql-docker:3306/DemoDokcer
+    driver-class-name:  com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+
+  # jpa
+  jpa:
+    hibernate:
+      ddl-auto: update  # 建表策略
+    show-sql: true  #显示SQL语句
